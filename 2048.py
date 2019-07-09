@@ -109,14 +109,14 @@ class Direction:
     RIGHT = "RIGHT"
 
     keycode_mapping = {
-        113: LEFT,
-        114: RIGHT,
-        116: DOWN,
-        111: UP,
-        38: LEFT,  # qwerty
-        40: RIGHT,
-        39: DOWN,
-        25: UP,
+        65: LEFT,
+        68: RIGHT,
+        83: DOWN,
+        87: UP,  # qwerty
+        37: LEFT,
+        39: RIGHT,
+        40: DOWN,
+        38: UP,
     }
 
     @staticmethod
@@ -147,6 +147,8 @@ class GameDisplay(tk.Frame):
         self.quit = tk.Button(self, text="CLOSE", fg="red",
                               command=self.master.destroy)
         self.quit.pack(side="bottom")
+        self.master.bind_all('<Return>', lambda event: self.start_game())
+        self.master.bind_all('<Escape>', lambda event: self.master.destroy())
 
     def start_game(self):
         self.hi_there.config(text="NewGame")
